@@ -1,6 +1,6 @@
 # Kittysaywoof
 
-`Kittysaywoof` is a Spring Boot web application for a pet store style site with:
+`Kittysaywoof` is a simulated e-commerce website built with Spring Boot. It includes:
 
 - Home, About, Products, Cart, Contact, and Checkout pages
 - Thymeleaf server-rendered templates
@@ -30,6 +30,8 @@
 4. Open:
 
 - `http://localhost:8080`
+
+You can also import and run the project in Eclipse as a Spring Boot application.
 
 ## Database
 

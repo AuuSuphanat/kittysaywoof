@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products - Kitty, say woof</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+	
+	
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">KSW</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" th:href="@{/}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" th:href="@{/products}">Product</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" th:href="@{/cart}">Cart</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" th:href="@{/about}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" th:href="@{/contact}">Contact</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search" onsubmit="return searchProduct()">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              id="searchInput"
+            />
+            <button class="btn btn-warning" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <!-- Product Section Intro (Reusing about-us class) -->
+    <section class="about-us">
+      <div class="container text-center">
+        <h1 class="about-title">Shop for Your Furry Friends</h1>
+        <p class="about-text">
+          Browse our glorious collection of barely-acceptable pet products. 
+          From expired treats to suspiciously squeaky toys, we've got everything 
+          your pet might regret chewing. Go ahead ,start shopping and help us clear the shelves!
+        </p>
+        
+      </div>
+    </section>
+
+    <!-- Product Grid (Reusing our-services class) -->
+    <section class="our-services">
+      <div class="container">
+        <h2 class="section-title">🐾 Our Products</h2>
+        <div class="row">
+          <!-- Product 1 -->
+          <div class="col-md-4">
+            <div
+              class="service-card product-card"
+              data-id="1"
+              data-name="Premium Dog Food"
+              data-price="29.99"
+            >
+              <div class="about-image-container">
+                <img
+                  src="./image/dog-food.webp"
+                  alt="Premium Dog Food"
+                  class="about-img"
+                />
+              </div>
+			  <h3>Premium Dog Food</h3>
+              <!-- Keep price visible -->
+			  <p><strong>Price:</strong> $29.99</p>
+			  <!-- Hide this part by default -->
+			  <div class="product-description">
+				<p>Nutritious and delicious dog food for all breeds. 5kg bag.</p>
+			  </div>
+              <button class="btn btn-warning add-to-cart">Add to Cart</button>
+            </div>
+          </div>
+          <!-- Product 2 -->
+          <div class="col-md-4">
+            <div
+              class="service-card product-card"
+              data-id="2"
+              data-name="Cat Toy Set"
+              data-price="49.99"
+            >
+              <div class="about-image-container">
+                <img
+                  src="./image/cat-toy.jpeg"
+                  alt="Cat Toy Set"
+                  class="about-img"
+                />
+              </div>
+              <h3>Cat Toy Set</h3>
+			  <!-- Keep price visible -->
+			  <p><strong>Price:</strong> $49.99</p>
+			  <!-- Hide this part by default -->
+			  <div class="product-description">
+				<p>A set of Turntable Ball Toy, Feather Stick, 5 Ball, Scratching Post with Mat</p>
+			  </div>
+
+              <button class="btn btn-warning add-to-cart">Add to Cart</button>
+            </div>
+          </div>
+          <!-- Product 3 -->
+          <div class="col-md-4">
+            <div
+              class="service-card product-card"
+              data-id="3"
+              data-name="Pet Bed"
+              data-price="39.99"
+            >
+              <div class="about-image-container">
+                <img
+                  src="./image/pet-bed.jpg"
+                  alt="Pet Bed"
+                  class="about-img"
+                />
+              </div>
+              <h3>Pet Bed</h3>
+			  <p><strong>Price:</strong> $39.99</p>
+			  <div class="product-description">
+				<p>Cozy and comfortable bed for your pet to relax in.</p>
+              </div>
+              <button class="btn btn-warning add-to-cart">Add to Cart</button>
+            </div>
+          </div>
+          <!-- Product 4 -->
+          <div class="col-md-4">
+            <div
+              class="service-card product-card"
+              data-id="4"
+              data-name="Dog Leash"
+              data-price="9.99"
+            >
+              <div class="about-image-container">
+                <img
+                  src="./image/pet-leash.jpeg"
+                  alt="Dog Leash"
+                  class="about-img"
+                />
+              </div>
+              <h3>Dog Leash</h3>
+			  <p><strong>Price:</strong> $9.99</p>
+              <div class="product-description">
+			  <p>Durable and stylish leash for daily walks.</p>
+              </div>
+              <button class="btn btn-warning add-to-cart">Add to Cart</button>
+            </div>
+          </div>
+          <!-- Product 5 -->
+          <div class="col-md-4">
+            <div
+              class="service-card product-card"
+              data-id="5"
+              data-name="Professional Pet Grooming Kit"
+              data-price="99.99"
+            >
+              <div class="about-image-container">
+                <img
+                  src="./image/grooming-kit.webp"
+                  alt="Professional Pet Grooming Kit"
+                  class="about-img"
+                />
+              </div>
+              <h3>Professional Pet Grooming Kit</h3>
+			  <p><strong>Price:</strong> $99.99</p>
+              <div class="product-description">
+			  <p>Homeika pet grooming kit with super quiet vacuum function can collects 99% of pet fur while trimming, grooming and deshedding..</p>
+              </div>
+
+              <button class="btn btn-warning add-to-cart">Add to Cart</button>
+            </div>
+          </div>
+          <!-- Product 6 -->
+          <div class="col-md-4">
+            <div
+              class="service-card product-card"
+              data-id="6"
+              data-name="Fish Tank"
+              data-price="139.99"
+            >
+              <div class="about-image-container">
+                <img
+                  src="./image/fish-tank.webp"
+                  alt="Fish Tank Starter Kit"
+                  class="about-img"
+                />
+              </div>
+              <h3>Fish Tank Starter Kit</h3>
+              <p><strong>Price:</strong> $139.99</p>
+			  <div class="product-description">
+              <p>
+                The 40-50 gallon aquarium stand comes integrated with 3 AC and 2 USB outlets, optimally catering to all your aquarium &amp; reptile device power needs
+              </p>
+			  </div>
+
+              <button class="btn btn-warning add-to-cart">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action (Reusing about-us class) -->
+    <section class="about-us">
+      <div class="container text-center">
+        <h2 class="about-title">Ready to Spoil Your Pet?</h2>
+        <p class="about-text">
+          Check out your cart and throw your money at us,
+           not because your pet needs it, but because we really want it. 
+           The “best” products are waiting... sort of.
+        </p>
+        <a th:href="@{/cart}" class="btn btn-warning btn-lg">View Cart</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center p-3 mt-5">
+      <p>
+        &copy; 2025 Kitty, say woof | Follow us on
+        <a href="#" class="text-warning">Facebook</a>,
+        <a href="#" class="text-warning">Instagram</a>
+      </p>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Add to Cart Script -->
+    <script>
+      document.querySelectorAll(".add-to-cart").forEach((button) => {
+        button.addEventListener("click", () => {
+          const productCard = button.closest(".product-card");
+          const product = {
+            id: productCard.dataset.id,
+            name: productCard.dataset.name,
+            price: parseFloat(productCard.dataset.price),
+            quantity: 1,
+          };
+
+          // Get existing cart from local storage or initialize an empty array
+          let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+          // Check if product already exists in cart
+          const existingProduct = cart.find((item) => item.id === product.id);
+          if (existingProduct) {
+            existingProduct.quantity += 1;
+          } else {
+            cart.push(product);
+          }
+
+          // Save updated cart to local storage
+          localStorage.setItem("cart", JSON.stringify(cart));
+
+          // Alert user (you can replace this with a more sophisticated notification)
+          alert(`${product.name} has been added to your cart!`);
+        });
+      });
+	  
+	  
+	  window.addEventListener("DOMContentLoaded", () => {
+		const urlParams = new URLSearchParams(window.location.search);
+		const searchQuery = urlParams.get("search");
+		if (searchQuery) {
+		  const products = document.querySelectorAll(".product-card");
+		  products.forEach(card => {
+			const name = card.getAttribute("data-name").toLowerCase();
+			if (!name.includes(searchQuery.toLowerCase())) {
+			  card.parentElement.style.display = "none"; // hide this product's column
+			}
+		  });
+		}
+	  });
+	
+	  <!-- seraching function-->
+
+      function searchProduct() {
+        const query = document.getElementById("searchInput").value;
+        if (query.trim() !== "") {
+          window.location.href = "/products?search=" + encodeURIComponent(query);
+        }
+        return false;
+      }
+
+    </script>
+  </body>
+</html>

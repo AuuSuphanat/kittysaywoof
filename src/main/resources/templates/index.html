@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kitty, say woof</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">KSW</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" th:href="@{/}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" th:href="@{/products}">Product</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" th:href="@{/cart}">Cart</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" th:href="@{/about}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" th:href="@{/contact}">Contact</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search" onsubmit="return searchProduct()">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              id="searchInput"
+            />
+            <button class="btn btn-warning" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <!-- Offer Banner -->
+    <div class="container-fluid bg-warning text-center p-3">
+      <h4>🔥 Limited Time Offer: Up to 50% Off on Selected Products! 🔥</h4>
+    </div>
+
+    <!-- Carousel -->
+    <div class="container mt-4">
+      <div
+        id="carouselExampleIndicators"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            class="active"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="2"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="./image/img4.jpg" class="d-block w-100" alt="Slide 1" />
+          </div>
+          <div class="carousel-item">
+            <img src="./image/img2.webp" class="d-block w-100" alt="Slide 2" />
+          </div>
+          <div class="carousel-item">
+            <img src="./image/img3.webp" class="d-block w-100" alt="Slide 3" />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Featured Categories -->
+    <div class="container mt-5">
+      <h2 class="text-center">Shop by Categories</h2>
+      <div class="row text-center">
+        <div class="col-md-3">
+          <img src="./image/pet-food.webp" class="img-fluid category-img" alt="Category 1" />
+          <p>Food</p>
+        </div>
+        <div class="col-md-3">
+          <img src="./image/pet-toy.webp" class="img-fluid category-img" alt="Category 2" />
+          <p>Toys</p>
+        </div>
+        <div class="col-md-3">
+          <img src="./image/grooming.jpg.avif" class="img-fluid category-img" alt="Category 3" />
+          <p>Grooming</p>
+        </div>
+        <div class="col-md-3">
+          <img src="./image/pet-bed2.jpg" class="img-fluid category-img" alt="Category 4" />
+          <p>Beds</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Newsletter Subscription -->
+    <div class="container mt-5 text-center p-4 bg-light">
+      <h3>Subscribe to Our Newsletter</h3>
+      <p>Get the latest updates and offers directly in your inbox.</p>
+      <form class="d-inline-block">
+        <input
+          type="email"
+          class="form-control d-inline w-50"
+          placeholder="Enter your email"
+        />
+        <button class="btn btn-warning mt-2">Subscribe</button>
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center p-3 mt-5">
+      <p>
+        &copy; 2025 Kitty, say woof | Follow us on
+        <a href="#" class="text-warning">Facebook</a>,
+        <a href="#" class="text-warning">Instagram</a>
+      </p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	
+	<script>
+      function searchProduct() {
+        const query = document.getElementById("searchInput").value;
+        if (query.trim() !== "") {
+          window.location.href = "/products?search=" + encodeURIComponent(query);
+        }
+        return false;
+      }
+    </script>
+  </body>
+</html>
